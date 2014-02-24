@@ -14,4 +14,4 @@ Once Leiningen is setup, you will have a number of commands at your disposal to 
 ```lein repl```
 
 ####For more information on other tasks available with Leiningen:
-```lein```
+```lein ```
