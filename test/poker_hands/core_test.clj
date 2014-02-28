@@ -30,9 +30,22 @@
 	(is (= (convert-card-value "10H") 10))
 )
 
-(deftest high-card-test
-	(testing "Given a hand of 5 cards, it returns the highest card")
-	(is (= (get-high-card ["2D" "JC" "5S" "QH" "AD"]) "AD"))
-	
+(deftest get-winning-hand-test
+  (testing "Given two hands of 5 cards, it returns the hand with the
+    highest card")
+  (is (= #{"2D" "JC" "5S" "QH" "AD"}
+          (get-winning-hand #{"2D" "JC" "5S" "QH" "AD"}
+                          #{"2D" "JC" "5S" "QH" "KD"})
+         ))
+
+  (is (= (get-winning-hand #{"2D" "JC" "5S" "QH" "KD"}
+                           #{"2D" "JC" "5S" "QH" "AD"})
+         #{"2D" "JC" "5S" "QH" "AD"}))
+  (testing "Given two hands of 5 cards with equal high card, 
+    it returns the hand with the second highest card")
+  (is (= (get-winning-hand #{"2D" "5S" "QH" "4H" "3S"}
+                           #{"2D" "6H" "QS" "4H" "3S"})
+          #{"2D" "6H" "QH" "4H" "3S"}))
 )
+
 

@@ -6,9 +6,9 @@
 
 (defn convert-card-value
   [card]
-  (if (nil? (get card-values (apply str(drop-last card))))
-  	(Integer/parseInt (apply str(drop-last card)))
-  	(get card-values (apply str(drop-last card)))
+  (if (nil? (get card-values (apply str (drop-last card))))
+  	(Integer/parseInt (apply str (drop-last card)))
+  	(get card-values (apply str (drop-last card)))
   )
 )
 
@@ -20,8 +20,11 @@
   )
 )
 
-(defn get-high-card
-	[hand]
-	(reduce greater-card hand)
+(defn get-winning-hand 
+  [first-hand second-hand]
+  (let [first-sorted (sorted-set-by greater-card first-hand)
+       second-sorted (sorted-set-by greater-card second-hand)] first-sorted
+  )
+  
 )
 
