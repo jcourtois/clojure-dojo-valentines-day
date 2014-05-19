@@ -14,17 +14,19 @@
 
 (defn greater-card
   [first-card second-card]
-  (if (pos? (compare (convert-card-value first-card) (convert-card-value second-card)) )
-  	first-card
-  	second-card
-  )
+  (compare (convert-card-value first-card) (convert-card-value second-card))
 )
 
-(defn get-winning-hand 
+(defn high-card
+  [& coll]
+  (last (sorted-set-by greater-card coll))
+)
+
+(defn get-winning-hand
   [first-hand second-hand]
   (let [first-sorted (sorted-set-by greater-card first-hand)
        second-sorted (sorted-set-by greater-card second-hand)] first-sorted
   )
-  
+
 )
 
